@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.8'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+apply from: 'gradle/plugins/dependencies.gradle'
+
+group = 'br.com.valdircezar'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = '17'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
