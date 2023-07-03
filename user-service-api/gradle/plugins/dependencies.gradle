@@ -6,7 +6,7 @@ repositories {
 
 dependencies {
     // Biblioteca de código comum
-//    implementation 'br.com.codecastle:hd-commons-lib:1.0.0'
+    implementation 'br.com.valdircezar:hd-commons-lib:1.0.0'
 
     // Starter para desenvolvimento de aplicativos web com Spring Boot
     implementation 'org.springframework.boot:spring-boot-starter-web'
