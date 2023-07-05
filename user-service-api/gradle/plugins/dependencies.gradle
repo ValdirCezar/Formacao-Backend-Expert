@@ -45,6 +45,9 @@ dependencies {
 
     // Dependência de teste
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Mockito test dependency
+    testImplementation 'org.mockito:mockito-inline:4.11.0'
 }
 
 dependencyManagement {
