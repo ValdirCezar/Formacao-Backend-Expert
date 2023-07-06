@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.List;
 
 import static br.com.valdircezar.userserviceapi.creator.CreatorUtils.generateMock;
+import static org.springframework.http.HttpStatus.CONFLICT;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -26,6 +27,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("test")
 class UserControllerImplTest {
 
+    public static final String BASE_URI = "/api/users";
+    public static final String VALID_EMAIL = "kj45klj23b5@mail.com";
+
     @Autowired
     private MockMvc mockMvc;
 
@@ -35,7 +39,7 @@ class UserControllerImplTest {
     @Test
     void testFindByIdWithSuccess() throws Exception {
         final var entity = generateMock(User.class);
-        final var userId =  userRepository.save(entity).getId();
+        final var userId = userRepository.save(entity).getId();
 
         mockMvc.perform(get("/api/users/{id}", userId))
                 .andExpect(status().isOk())
@@ -66,7 +70,7 @@ class UserControllerImplTest {
 
         userRepository.saveAll(List.of(entity1, entity2));
 
-        mockMvc.perform(get("/api/users"))
+        mockMvc.perform(get(BASE_URI))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
                 .andExpect(jsonPath("$[0]").isNotEmpty())
@@ -82,12 +86,34 @@ class UserControllerImplTest {
         final var request = generateMock(CreateUserRequest.class).withEmail(validEmail);
 
         mockMvc.perform(
-                post("/api/users")
+                post(BASE_URI)
                         .contentType(APPLICATION_JSON)
                         .content(toJson(request))
         ).andExpect(status().isCreated());
 
         userRepository.deleteByEmail(validEmail);
+    }
+
+    @Test
+    void testSaveUserWithConflict() throws Exception {
+        final var entity = generateMock(User.class).withEmail(VALID_EMAIL);
+
+        userRepository.save(entity);
+
+        final var request = generateMock(CreateUserRequest.class).withEmail(VALID_EMAIL);
+
+        mockMvc.perform(
+                        post(BASE_URI)
+                                .contentType(APPLICATION_JSON)
+                                .content(toJson(request))
+                ).andExpect(status().isConflict())
+                .andExpect(jsonPath("$.message").value("Email [ " + VALID_EMAIL + " ] already exists"))
+                .andExpect(jsonPath("$.error").value(CONFLICT.getReasonPhrase()))
+                .andExpect(jsonPath("$.path").value(BASE_URI))
+                .andExpect(jsonPath("$.status").value(CONFLICT.value()))
+                .andExpect(jsonPath("$.timestamp").isNotEmpty());
+
+        userRepository.deleteById(entity.getId());
     }
 
     private String toJson(final Object object) throws Exception {
