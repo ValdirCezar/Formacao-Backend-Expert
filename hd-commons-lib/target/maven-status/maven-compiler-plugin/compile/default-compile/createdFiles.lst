@@ -2,9 +2,9 @@ models/exceptions/ValidationException$ValidationExceptionBuilder.class
 models/exceptions/ValidationException$ValidationExceptionBuilderImpl.class
 models/exceptions/ResourceNotFoundException.class
 models/exceptions/StandardError$StandardErrorBuilderImpl.class
-models/requests/CreateUserRequest.class
 models/exceptions/ValidationException$FieldError.class
 models/exceptions/ValidationException.class
 models/exceptions/StandardError$StandardErrorBuilder.class
 models/enums/ProfileEnum.class
 models/exceptions/StandardError.class
+models/requests/CreateUserRequest.class

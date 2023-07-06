@@ -8,5 +8,5 @@ spring:
 springdoc:
   openapi:
     title: 'User Service API'
-    description: 'Compoent responsible for user management created on Formacao BackEnd Expert with Valdir Cezar'
+    description: 'Component responsible for user management created on Formacao BackEnd Expert with Valdir Cezar'
     version: '1.0.0'
