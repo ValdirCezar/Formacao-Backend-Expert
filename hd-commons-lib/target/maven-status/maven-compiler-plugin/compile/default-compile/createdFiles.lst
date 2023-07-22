@@ -7,4 +7,7 @@ models/exceptions/ValidationException.class
 models/exceptions/StandardError$StandardErrorBuilder.class
 models/enums/ProfileEnum.class
 models/exceptions/StandardError.class
+models/requests/AuthenticateRequest.class
 models/requests/CreateUserRequest.class
+models/responses/AuthenticationResponse$AuthenticationResponseBuilder.class
+models/responses/AuthenticationResponse.class
