@@ -1,2 +1,9 @@
+/Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/requests/CreateUserRequest.java
+/Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/exceptions/StandardError.java
+/Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/exceptions/ResourceNotFoundException.java
 /Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/enums/ProfileEnum.java
+/Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/exceptions/ValidationException.java
+/Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/requests/UpdateUserRequest.java
+/Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/requests/AuthenticateRequest.java
 /Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/responses/UserResponse.java
+/Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/responses/AuthenticationResponse.java
