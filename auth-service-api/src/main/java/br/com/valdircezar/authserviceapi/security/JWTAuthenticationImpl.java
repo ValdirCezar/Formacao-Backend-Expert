@@ -1,5 +1,6 @@
-package br.com.valdircezar.authserviceapi.security.dtos;
+package br.com.valdircezar.authserviceapi.security;
 
+import br.com.valdircezar.authserviceapi.security.dtos.UserDetailsDTO;
 import br.com.valdircezar.authserviceapi.utils.JWTUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -33,8 +34,8 @@ public class JWTAuthenticationImpl {
         log.info("Successfully authenticated user: {}", detailsDTO.getUsername());
         final var token = jwtUtils.generateToken(detailsDTO);
         return AuthenticationResponse.builder()
-                .type("JWT")
-                .token("Bearer " + token)
+                .type("Bearer")
+                .token(token)
                 .build();
     }
 }

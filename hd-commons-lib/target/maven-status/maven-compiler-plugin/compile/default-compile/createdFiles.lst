@@ -1,10 +1,15 @@
 models/exceptions/ValidationException$ValidationExceptionBuilder.class
+models/requests/RefreshTokenRequest.class
 models/exceptions/ValidationException$ValidationExceptionBuilderImpl.class
 models/exceptions/ResourceNotFoundException.class
 models/exceptions/StandardError$StandardErrorBuilderImpl.class
+models/responses/UserResponse.class
+models/responses/RefreshTokenResponse.class
 models/exceptions/ValidationException$FieldError.class
 models/exceptions/ValidationException.class
+models/exceptions/RefreshTokenExpired.class
 models/exceptions/StandardError$StandardErrorBuilder.class
+models/requests/UpdateUserRequest.class
 models/enums/ProfileEnum.class
 models/exceptions/StandardError.class
 models/requests/AuthenticateRequest.class
