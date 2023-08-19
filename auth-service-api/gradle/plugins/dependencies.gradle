@@ -13,13 +13,13 @@ dependencies {
         because('Starter para criar aplicação web, incluindo aplicação RESTful, usando Spring MVC. Usa Tomcat como container padrão.')
     }
 
-//    implementation ('org.springframework.cloud:spring-cloud-starter-config') {
-//        because('Starter para integrar com o Spring Cloud Config Server')
-//    }
+    implementation ('org.springframework.cloud:spring-cloud-starter-config') {
+        because('Starter para integrar com o Spring Cloud Config Server')
+    }
 
-//    implementation ('org.springframework.cloud:spring-cloud-starter-bootstrap') {
-//        because('Starter para integrar com o Spring Cloud Config Server')
-//    }
+    implementation ('org.springframework.cloud:spring-cloud-starter-bootstrap') {
+        because('Starter para integrar com o Spring Cloud Config Server')
+    }
 
 //    implementation ('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client') {
 //        because('Starter para integrar com o Spring Cloud Eureka Server')
