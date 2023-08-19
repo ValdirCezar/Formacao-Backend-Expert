@@ -13,13 +13,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     // Starter para configuração do Spring Cloud Config
-//    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
 
     // Starter para integração com o Eureka Discovery Client
 //    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
     // Starter para configuração do Spring Cloud
-//    implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
+    implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 
     // Starter para acesso a dados com Spring Data JPA
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
