@@ -1,0 +1,58 @@
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url 'https://artifactory-oss.prod.netflix.net/artifactory/maven-oss-candidates' }
+}
+
+ext {
+    set('springCloudVersion', "2022.0.2")
+}
+
+dependencies {
+// Starter para desenvolvimento de aplicativos web com Spring Boot
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Starter para configuração do Spring Cloud Config
+//    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+
+    // Starter para integração com o Eureka Discovery Client
+//    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
+    // Starter para configuração do Spring Cloud
+//    implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
+
+    // Starter para acesso a dados com Spring Data JPA
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Starter para validação de dados
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // Driver do MySQL
+    implementation 'mysql:mysql-connector-java:8.0.32'
+
+    // Biblioteca de código comum
+    implementation 'br.com.valdircezar:hd-commons-lib:1.0.0'
+
+    // Starter para integração com banco de dados
+    compileOnly 'com.h2database:h2'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Binding para o MapStruct com Lombok
+    implementation 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+
+    // MapStruct
+    implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+
+    // Dependência de teste
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
