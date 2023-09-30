@@ -17,3 +17,4 @@ models/requests/AuthenticateRequest.class
 models/requests/CreateUserRequest.class
 models/responses/AuthenticationResponse$AuthenticationResponseBuilder.class
 models/responses/AuthenticationResponse.class
+models/responses/OrderResponse.class
