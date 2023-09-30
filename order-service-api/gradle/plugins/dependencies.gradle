@@ -9,32 +9,41 @@ ext {
 }
 
 dependencies {
-// Starter para desenvolvimento de aplicativos web com Spring Boot
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation('org.springframework.boot:spring-boot-starter-web') {
+        because('Starter para desenvolvimento de aplicativos web com Spring Boot')
+    }
 
-    // Starter para configuração do Spring Cloud Config
-    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    implementation('org.springframework.cloud:spring-cloud-starter-config') {
+        because('Starter para configuração do Spring Cloud Config')
+    }
 
-    // Starter para integração com o Eureka Discovery Client
-//    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+//    implementation ('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client') {
+//      because('Starter para integração com o Eureka Discovery Client')
+//    }
 
-    // Starter para configuração do Spring Cloud
-    implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
+    implementation ('org.springframework.cloud:spring-cloud-starter-bootstrap') {
+        because('Starter para configuração do Spring Cloud Config')
+    }
 
-    // Starter para acesso a dados com Spring Data JPA
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation ('org.springframework.boot:spring-boot-starter-data-jpa') {
+        because('Starter para integração com o Spring Data JPA')
+    }
 
-    // Starter para validação de dados
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation ('org.springframework.boot:spring-boot-starter-validation') {
+        because('Starter para validação de dados com o Spring Validation')
+    }
 
-    // Driver do MySQL
-    implementation 'mysql:mysql-connector-java:8.0.32'
+    implementation ('mysql:mysql-connector-java:8.0.32') {
+        because('Driver JDBC para conexão com o MySQL')
+    }
 
-    // Biblioteca de código comum
-    implementation 'br.com.valdircezar:hd-commons-lib:1.0.0'
+    implementation ('br.com.valdircezar:hd-commons-lib:1.0.0') {
+        because('Biblioteca de classes em comum entre os componentes do projeto')
+    }
 
-    // Starter para integração com banco de dados
-    compileOnly 'com.h2database:h2'
+    compileOnly ('com.h2database:h2') {
+        because('Banco de dados H2 para testes em memória')
+    }
 
     // Lombok
     compileOnly 'org.projectlombok:lombok'
@@ -47,8 +56,9 @@ dependencies {
     implementation 'org.mapstruct:mapstruct:1.5.3.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
 
-    // Dependência de teste
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation ('org.springframework.boot:spring-boot-starter-test') {
+        because('Starter para testes unitários com o Spring Boot')
+    }
 }
 
 dependencyManagement {

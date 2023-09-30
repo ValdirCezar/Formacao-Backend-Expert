@@ -1,3 +1,4 @@
+models/enums/OrderStatusEnum.class
 models/exceptions/ValidationException$ValidationExceptionBuilder.class
 models/requests/RefreshTokenRequest.class
 models/exceptions/ValidationException$ValidationExceptionBuilderImpl.class
