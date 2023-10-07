@@ -4,8 +4,3 @@ spring:
   cloud:
     config:
       uri: ${CONFIG_SERVER_URI:http://localhost:8888}
-  jpa:
-    properties:
-      hibernate:
-        jdbc:
-          time_zone: America/Sao_Paulo
