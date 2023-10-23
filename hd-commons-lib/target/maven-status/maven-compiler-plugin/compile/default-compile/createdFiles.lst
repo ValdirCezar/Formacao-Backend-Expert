@@ -9,6 +9,7 @@ models/responses/RefreshTokenResponse.class
 models/exceptions/ValidationException$FieldError.class
 models/exceptions/ValidationException.class
 models/exceptions/RefreshTokenExpired.class
+models/requests/UpdateOrderRequest.class
 models/exceptions/StandardError$StandardErrorBuilder.class
 models/requests/UpdateUserRequest.class
 models/enums/ProfileEnum.class
