@@ -13,6 +13,7 @@ import models.exceptions.StandardError;
 import models.requests.CreateOrderRequest;
 import models.requests.UpdateOrderRequest;
 import models.responses.OrderResponse;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -124,5 +125,28 @@ public interface OrderController {
             @NotNull(message = "The order id must be informed")
             @Parameter(description = "Order ID", example = "10", required = true)
             @PathVariable(name = "id") final Long id
+    );
+
+    @Operation(summary = "Find all orders paginated")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Orders found"),
+            @ApiResponse(
+                    responseCode = "500", description = "Internal server error",
+                    content = @Content(mediaType = APPLICATION_JSON_VALUE, schema = @Schema(implementation = StandardError.class))
+            )
+    })
+    @GetMapping("/page")
+    ResponseEntity<Page<OrderResponse>> findAllPaginated(
+            @Parameter(description = "Page number", example = "0", required = true)
+            @RequestParam(name = "page", defaultValue = "0") final Integer page,
+
+            @Parameter(description = "Lines per page", example = "12", required = true)
+            @RequestParam(name = "linesPerPage", defaultValue = "12") final Integer linesPerPage,
+
+            @Parameter(description = "Order direction", example = "ASC", required = true)
+            @RequestParam(name = "direction", defaultValue = "ASC") final String direction,
+
+            @Parameter(description = "Order by attribute", example = "id", required = true)
+            @RequestParam(name = "orderBy", defaultValue = "id") final String orderBy
     );
 }
