@@ -1,5 +1,6 @@
 package br.com.valdircezar.orderserviceapi.services.impl;
 
+import br.com.valdircezar.orderserviceapi.clients.UserServiceFeignClient;
 import br.com.valdircezar.orderserviceapi.entities.Order;
 import br.com.valdircezar.orderserviceapi.mapper.OrderMapper;
 import br.com.valdircezar.orderserviceapi.repositories.OrderRepository;
@@ -26,6 +27,7 @@ public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository repository;
     private final OrderMapper mapper;
+    private final UserServiceFeignClient userServiceFeignClient;
 
     @Override
     public Order findById(final Long id) {
@@ -38,6 +40,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void save(CreateOrderRequest request) {
+        validateUserId(request.requesterId());
+
         final var entity = repository.save(mapper.fromRequest(request));
         log.info("Order created: {}", entity);
     }
@@ -74,5 +78,10 @@ public class OrderServiceImpl implements OrderService {
         );
 
         return repository.findAll(pageRequest);
+    }
+
+    void validateUserId(final String userId) {
+        final var response = userServiceFeignClient.findById(userId).getBody();
+        log.info("User found: {}", response);
     }
 }
