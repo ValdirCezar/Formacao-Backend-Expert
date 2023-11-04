@@ -17,9 +17,9 @@ dependencies {
         because('Starter para configuração do Spring Cloud Config')
     }
 
-//    implementation ('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client') {
-//      because('Starter para integração com o Eureka Discovery Client')
-//    }
+    implementation ('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client') {
+      because('Starter para integração com o Eureka Discovery Client')
+    }
 
     implementation ('org.springframework.cloud:spring-cloud-starter-bootstrap') {
         because('Starter para configuração do Spring Cloud Config')

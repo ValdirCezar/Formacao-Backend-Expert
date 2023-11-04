@@ -18,7 +18,7 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 
     // Starter para integração com o Eureka Discovery Client
-//    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
     // Starter para acesso a dados com o MongoDB
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
