@@ -21,9 +21,9 @@ dependencies {
         because('Starter para integrar com o Spring Cloud Config Server')
     }
 
-//    implementation ('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client') {
-//        because('Starter para integrar com o Spring Cloud Eureka Server')
-//    }
+    implementation ('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client') {
+        because('Starter para integrar com o Spring Cloud Eureka Server')
+    }
 
     implementation ('org.springframework.boot:spring-boot-starter-data-mongodb') {
         because('Starter para integrar com o MongoDB')
