@@ -1,54 +1,50 @@
-version: '3'
+version: "3.8"
+
 services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      - helpdesk
+
   config-server:
-    image: openjdk:20-jdk
-    build:
-      context: ./config-server
+    image: valdircezar/helpdesk-config-server
+    container_name: 'config-server'
     environment:
       - CONFIG_SERVER_URI=https://github.com/ValdirCezar/formacao-backend-expert-configs
       - CONFIG_SERVER_USERNAME=valdir_cezar
-      - CONFIG_SERVER_PASSWORD=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
+      - CONFIG_SERVER_PASSWORD=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
+      - PORT=8888
     ports:
       - "8888:8888"
+    expose:
+      - 8888
     networks:
-      - helpdesk-network
+      - helpdesk
 
   service-discovery:
-    image: openjdk:20-jdk
-    build:
-      context: ./service-discovery
+    image: valdircezar/helpdesk-service-discovery
+    container_name: 'service-discovery'
+    environment:
+      - CONFIG_SERVER_URI=config-server:8888
+      - PORT=8761
+    ports:
+      - "8761:8761"
+    expose:
+      - 8761
+    networks:
+      - helpdesk
     depends_on:
       - config-server
-    networks:
-      - helpdesk-network
-
-  user-service-api:
-    image: openjdk:20-jdk
-    build:
-      context: ./user-service-api
-    depends_on:
-      - service-discovery
-    networks:
-      - helpdesk-network
-
-  auth-service-api:
-    image: openjdk:20-jdk
-    build:
-      context: ./auth-service-api
-    depends_on:
-      - service-discovery
-    networks:
-      - helpdesk-network
-
-  order-service-api:
-    image: openjdk:20-jdk
-    build:
-      context: ./order-service-api
-    depends_on:
-      - auth-service-api
-    networks:
-      - helpdesk-network
+    links:
+      - config-server
 
 networks:
-  helpdesk-network:
+  helpdesk:
     driver: bridge
