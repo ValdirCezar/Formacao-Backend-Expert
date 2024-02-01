@@ -7,11 +7,13 @@ import br.com.valdircezar.orderserviceapi.repositories.OrderRepository;
 import br.com.valdircezar.orderserviceapi.services.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import models.dtos.OrderCreatedMessage;
 import models.exceptions.ResourceNotFoundException;
 import models.requests.CreateOrderRequest;
 import models.requests.UpdateOrderRequest;
 import models.responses.OrderResponse;
 import models.responses.UserResponse;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,7 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepository repository;
     private final OrderMapper mapper;
     private final UserServiceFeignClient userServiceFeignClient;
+    private final RabbitTemplate rabbitTemplate;
 
     @Override
     public Order findById(final Long id) {
@@ -43,12 +46,15 @@ public class OrderServiceImpl implements OrderService {
     public void save(CreateOrderRequest request) {
         final var requester = validateUserId(request.requesterId());
         final var customer = validateUserId(request.customerId());
-
-        log.info("Requester: {}", requester);
-        log.info("Customer: {}", customer);
-
         final var entity = repository.save(mapper.fromRequest(request));
+
         log.info("Order created: {}", entity);
+
+        rabbitTemplate.convertAndSend(
+                "helpdesk",
+                "rk.orders.create",
+                new OrderCreatedMessage(mapper.fromEntity(entity), customer, requester)
+        );
     }
 
     @Override
@@ -66,8 +72,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private void validateUsers(UpdateOrderRequest request) {
-        if(request.requesterId() != null) validateUserId(request.requesterId());
-        if(request.customerId() != null) validateUserId(request.customerId());
+        if (request.requesterId() != null) validateUserId(request.requesterId());
+        if (request.customerId() != null) validateUserId(request.customerId());
     }
 
     @Override

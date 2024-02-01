@@ -13,31 +13,35 @@ dependencies {
         because('Starter para desenvolvimento de aplicativos web com Spring Boot')
     }
 
+    implementation('org.springframework.boot:spring-boot-starter-amqp') {
+        because('Starter para integração com o RabbitMQ')
+    }
+
     implementation('org.springframework.cloud:spring-cloud-starter-config') {
         because('Starter para configuração do Spring Cloud Config')
     }
 
-    implementation ('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client') {
-      because('Starter para integração com o Eureka Discovery Client')
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client') {
+        because('Starter para integração com o Eureka Discovery Client')
     }
 
-    implementation ('org.springframework.cloud:spring-cloud-starter-bootstrap') {
+    implementation('org.springframework.cloud:spring-cloud-starter-bootstrap') {
         because('Starter para configuração do Spring Cloud Config')
     }
 
-    implementation ('org.springframework.boot:spring-boot-starter-data-jpa') {
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa') {
         because('Starter para integração com o Spring Data JPA')
     }
 
-    implementation ('org.springframework.boot:spring-boot-starter-validation') {
+    implementation('org.springframework.boot:spring-boot-starter-validation') {
         because('Starter para validação de dados com o Spring Validation')
     }
 
-    implementation ('mysql:mysql-connector-java:8.0.32') {
+    implementation('mysql:mysql-connector-java:8.0.32') {
         because('Driver JDBC para conexão com o MySQL')
     }
 
-    implementation ('br.com.valdircezar:hd-commons-lib:1.0.0') {
+    implementation('br.com.valdircezar:hd-commons-lib:1.0.0') {
         because('Biblioteca de classes em comum entre os componentes do projeto')
     }
 
@@ -45,7 +49,7 @@ dependencies {
         because('Starter para integração com o Spring Cloud OpenFeign')
     }
 
-    compileOnly ('com.h2database:h2') {
+    compileOnly('com.h2database:h2') {
         because('Banco de dados H2 para testes em memória')
     }
 
@@ -60,7 +64,7 @@ dependencies {
     implementation 'org.mapstruct:mapstruct:1.5.3.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
 
-    testImplementation ('org.springframework.boot:spring-boot-starter-test') {
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
         because('Starter para testes unitários com o Spring Boot')
     }
 }

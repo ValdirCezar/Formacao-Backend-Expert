@@ -4,3 +4,9 @@ spring:
   cloud:
     config:
       uri: ${CONFIG_SERVER_URI:http://localhost:8888}
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+    connection-timeout: 10000
