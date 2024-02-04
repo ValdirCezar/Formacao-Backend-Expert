@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" style="font-family: Arial, sans-serif;">
+<head>
+    <style>
+        body {
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #444;
+            padding-bottom: 8px;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 2px;
+            border-bottom: 1px dotted #eee;
+        }
+
+        li:last-child {
+            border-bottom: none;
+            margin: 2px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Olá <span th:text="${customerName}" style="font-weight: bold;"></span>, sua ordem foi criada com
+    sucesso!</h3>
+
+<table>
+    <ul>
+        <h2>Detalhes da ordem</h2>
+        <li><strong>ID:</strong> <span th:text="${orderId}"></span></li>
+        <li><strong>Título:</strong> <span th:text="${title}"></span></li>
+        <li><strong>Descrição:</strong> <span th:text="${description}"></span></li>
+        <li><strong>Data de criação:</strong> <span th:text="${creationDate}"></span></li>
+        <li><strong>Status:</strong> <span th:text="${status}"></span></li>
+        <li><strong>Técnico responsável:</strong> <span th:text="${responsibleTechnician}"></span></li>
+    </ul>
+</table>
+
+</body>
+</html>

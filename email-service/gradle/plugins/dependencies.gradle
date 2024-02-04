@@ -21,6 +21,9 @@ dependencies {
     // Starter para RabbitMQ com Spring Boot
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
 
+    // Thymeleaf - Template Engine
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
     // Starter para configuração do Spring Cloud
     implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 
