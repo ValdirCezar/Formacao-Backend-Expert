@@ -9,5 +9,11 @@ spring:
           uri: ${CONFIG_SERVER_URI}
           username: ${CONFIG_SERVER_USERNAME}
           password: ${CONFIG_SERVER_PASSWORD}
+eureka:
+  client:
+    service-url:
+      fetch-registry: true
+      register-with-eureka: true
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
 server:
   port: ${PORT:8888}

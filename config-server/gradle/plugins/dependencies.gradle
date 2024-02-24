@@ -7,11 +7,15 @@ ext {
 }
 
 dependencies {
-    implementation ('org.springframework.cloud:spring-cloud-config-server') {
+    implementation('org.springframework.cloud:spring-cloud-config-server') {
         because('Starter para configuração do Spring Cloud Config')
     }
 
-    testImplementation ('org.springframework.boot:spring-boot-starter-test') {
+    implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client') {
+        because("Starter para integração com o Eureka Discovery Client")
+    }
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
         because('Starter para testes unitários com o Spring Boot')
     }
 }

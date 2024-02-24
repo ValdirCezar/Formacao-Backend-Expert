@@ -3,4 +3,4 @@ spring:
     name: 'auth-service-api'
   cloud:
     config:
-      uri: ${CONFIG_SERVER_URI:http://localhost:8888}
+      uri: 'config-server'

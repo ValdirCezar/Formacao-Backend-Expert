@@ -3,7 +3,7 @@ spring:
     name: 'order-service-api'
   cloud:
     config:
-      uri: ${CONFIG_SERVER_URI:http://localhost:8888}
+      uri: 'config-server'
   rabbitmq:
     host: ${RABBITMQ_HOST:localhost}
     port: ${RABBITMQ_PORT:5672}

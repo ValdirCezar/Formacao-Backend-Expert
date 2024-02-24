@@ -3,7 +3,7 @@ spring:
     name: 'service-discovery'
   cloud:
     config:
-      uri: ${CONFIG_SERVER_URI:http://localhost:8888}
+      uri: 'config-server'
 eureka:
   client:
     register-with-eureka: false
