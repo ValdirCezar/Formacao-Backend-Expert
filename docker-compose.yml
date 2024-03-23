@@ -19,7 +19,7 @@ services:
     environment:
       - CONFIG_SERVER_URI=https://github.com/ValdirCezar/formacao-backend-expert-configs
       - CONFIG_SERVER_USERNAME=valdir_cezar
-      - CONFIG_SERVER_PASSWORD=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
+      - CONFIG_SERVER_PASSWORD=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
       - PORT=8888
     ports:
       - "8888:8888"

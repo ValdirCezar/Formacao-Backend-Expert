@@ -1,0 +1,87 @@
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url 'https://artifactory-oss.prod.netflix.net/artifactory/maven-oss-candidates' }
+}
+
+dependencies {
+    implementation ('br.com.valdircezar:hd-commons-lib:1.0.0') {
+        because('Biblioteca de classes em comum entre os componentes do projeto')
+    }
+
+    implementation ('org.springframework.boot:spring-boot-starter-web') {
+        because('Starter para desenvolvimento de aplicativos web com Spring Boot')
+    }
+
+    implementation ('org.springframework.cloud:spring-cloud-starter-bootstrap') {
+        because('Starter para configuração do Spring Cloud Config')
+    }
+
+    implementation ('org.springframework.cloud:spring-cloud-starter-config') {
+        because('Starter para configuração do Spring Cloud Config')
+    }
+
+    implementation ('org.springframework.boot:spring-boot-starter-validation') {
+        because('Starter para validação de dados com o Spring Validation')
+    }
+
+    implementation ('com.fasterxml.jackson.core:jackson-databind') {
+        because('Biblioteca para serialização e desserialização JSON')
+    }
+
+    implementation ('org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j') {
+        because('Starter para integração com o Resilience4j Circuit Breaker')
+    }
+
+    implementation ('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client') {
+        because('Starter para integração com o Eureka Discovery Client')
+    }
+
+    implementation ('org.springframework.cloud:spring-cloud-starter-openfeign') {
+        because('Starter para integração com o Spring Cloud OpenFeign')
+    }
+
+    implementation ('com.fasterxml.jackson.datatype:jackson-datatype-jsr310') {
+        because('Biblioteca para serialização de datas do Java 8')
+    }
+
+    implementation ('org.springframework.boot:spring-boot-starter-amqp') {
+        because('Starter para integração com o RabbitMQ')
+    }
+
+//    implementation ('org.springframework.boot:spring-boot-starter-security') {
+//        because('Starter para segurança de aplicações com Spring Security')
+//    }
+//
+//    implementation ('io.jsonwebtoken:jjwt-api:0.11.2') {
+//        because('Biblioteca para manipulação de tokens JWT')
+//    }
+//
+//    runtimeOnly ('io.jsonwebtoken:jjwt-impl:0.11.2') {
+//        because('Biblioteca para manipulação de tokens JWT')
+//    }
+//
+//    runtimeOnly ('io.jsonwebtoken:jjwt-jackson:0.11.2') {
+//        because('Biblioteca para manipulação de tokens JWT')
+//    }
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Binding para o MapStruct com Lombok
+    implementation 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+
+    // MapStruct
+    implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+
+    // Dependência de teste
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2022.0.4"
+    }
+}
