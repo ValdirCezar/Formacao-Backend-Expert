@@ -10,3 +10,8 @@ eureka:
       fetch-registry: true
       register-with-eureka: true
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+springdoc:
+  openapi:
+    title: 'BFF Helpdesk API'
+    description: 'Component responsible for aggregating the microservices of the Helpdesk system'
+    version: '1.0.0'
