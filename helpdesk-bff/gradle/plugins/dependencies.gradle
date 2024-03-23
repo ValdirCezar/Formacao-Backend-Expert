@@ -49,6 +49,10 @@ dependencies {
         because('Starter para integração com o RabbitMQ')
     }
 
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa') {
+        because('Starter para integração com o Spring Data JPA')
+    }
+
 //    implementation ('org.springframework.boot:spring-boot-starter-security') {
 //        because('Starter para segurança de aplicações com Spring Security')
 //    }
