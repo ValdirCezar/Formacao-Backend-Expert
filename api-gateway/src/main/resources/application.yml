@@ -7,5 +7,11 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
+eureka:
+  client:
+    service-url:
+      fetch-registry: true
+      register-with-eureka: true
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
 server:
   port: ${SERVER_PORT:8765}

@@ -1,9 +1,6 @@
 spring:
   application:
     name: 'service-discovery'
-  cloud:
-    config:
-      uri: 'config-server'
 eureka:
   client:
     register-with-eureka: false
