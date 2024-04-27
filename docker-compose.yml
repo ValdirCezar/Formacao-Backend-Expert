@@ -51,21 +51,26 @@ services:
     networks:
       - helpdesk
 
-#  api-gateway:
-#    image: valdircezar/helpdesk-api-gateway
-#    container_name: 'api-gateway'
-#    environment:
-#      - SERVER_PORT=8765
-#      - EUREKA_URI=http://service-discovery:8761/eureka
-#    ports:
-#      - "8765:8765"
-#    expose:
-#      - 8765
-#    depends_on:
-#      - service-discovery
-#    networks:
-#      - helpdesk
-#
+  api-gateway:
+    container_name: 'api-gateway'
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    environment:
+      - EUREKA_URI=http://service-discovery:8761/eureka
+      - CONFIG_SERVER_URI=http://config-server:8888
+    ports:
+      - "8765:8765"
+    expose:
+      - 8765
+    depends_on:
+      service-discovery:
+        condition: service_healthy
+      config-server:
+        condition: service_healthy
+    networks:
+      - helpdesk
+
 
 
 networks:

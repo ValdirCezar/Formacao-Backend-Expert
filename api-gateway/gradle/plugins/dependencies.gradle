@@ -9,6 +9,10 @@ ext {
 }
 
 dependencies {
+    implementation('org.springframework.boot:spring-boot-actuator') {
+        because('Starter para monitoramento e gerenciamento de aplicações Spring Boot')
+    }
+
     implementation('org.springframework.cloud:spring-cloud-starter-config') {
         because('Starter para configuração do Spring Cloud Config')
     }
