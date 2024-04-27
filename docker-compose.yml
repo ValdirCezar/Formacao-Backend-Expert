@@ -71,7 +71,27 @@ services:
     networks:
       - helpdesk
 
-
+  auth-service-api:
+    container_name: 'auth-service-api'
+    build:
+      context: ./auth-service-api
+      dockerfile: Dockerfile
+    environment:
+      - PROFILE_ACTIVE=dev
+      - EUREKA_URI=http://service-discovery:8761/eureka
+      - CONFIG_SERVER_URI=http://config-server:8888
+      - SERVER_PORT=8080
+    ports:
+      - "8080:8080"
+    expose:
+      - 8080
+    depends_on:
+      service-discovery:
+        condition: service_healthy
+      config-server:
+        condition: service_healthy
+    networks:
+      - helpdesk
 
 networks:
   helpdesk:

@@ -3,4 +3,12 @@ spring:
     name: 'auth-service-api'
   cloud:
     config:
-      uri: 'config-server'
+      uri: ${CONFIG_SERVER_URI}
+  profiles:
+    active: ${PROFILE_ACTIVE}
+eureka:
+  client:
+    service-url:
+      fetch-registry: true
+      register-with-eureka: true
+      defaultZone: ${EUREKA_URI}
