@@ -30,6 +30,27 @@ services:
     networks:
       - helpdesk
 
+  config-server:
+    container_name: 'config-server'
+    build:
+      context: ./config-server
+      dockerfile: Dockerfile
+    environment:
+      - CONFIG_SERVER_URI=https://github.com/ValdirCezar/formacao-backend-expert-configs
+      - CONFIG_SERVER_USERNAME=valdir_cezar
+      - CONFIG_SERVER_PASSWORD=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
+      - EUREKA_URI=http://service-discovery:8761/eureka
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://config-server:8888/actuator/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    depends_on:
+      service-discovery:
+        condition: service_healthy
+    networks:
+      - helpdesk
+
 #  api-gateway:
 #    image: valdircezar/helpdesk-api-gateway
 #    container_name: 'api-gateway'
@@ -45,23 +66,7 @@ services:
 #    networks:
 #      - helpdesk
 #
-#  config-server:
-#    image: valdircezar/helpdesk-config-server
-#    container_name: 'config-server'
-#    environment:
-#      - CONFIG_SERVER_URI=https://github.com/ValdirCezar/formacao-backend-expert-configs
-#      - CONFIG_SERVER_USERNAME=valdir_cezar
-#      - CONFIG_SERVER_PASSWORD=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
-#      - EUREKA_URI=http://service-discovery:8761/eureka
-#      - PORT=8888
-#    ports:
-#      - "8888:8888"
-#    expose:
-#      - 8888
-#    depends_on:
-#      - service-discovery
-#    networks:
-#      - helpdesk
+
 
 networks:
   helpdesk:
