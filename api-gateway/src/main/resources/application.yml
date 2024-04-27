@@ -7,8 +7,6 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-    config:
-      uri: ${CONFIG_SERVER_URI}
 eureka:
   client:
     service-url:

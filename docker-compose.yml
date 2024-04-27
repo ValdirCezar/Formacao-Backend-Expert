@@ -4,9 +4,11 @@ services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
     container_name: 'rabbitmq'
-    ports:
-      - "5672:5672"
-      - "15672:15672"
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 20s
+      retries: 3
     volumes:
       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
@@ -89,6 +91,29 @@ services:
       service-discovery:
         condition: service_healthy
       config-server:
+        condition: service_healthy
+    networks:
+      - helpdesk
+
+  email-service:
+    container_name: 'email-service'
+    build:
+      context: ./email-service
+      dockerfile: Dockerfile
+    environment:
+      - PROFILE_ACTIVE=dev
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_ADDRESSES=rabbitmq
+      - RABBITMQ_USERNAME=guest
+      - RABBITMQ_PASSWORD=guest
+      - EUREKA_URI=http://service-discovery:8761/eureka
+      - CONFIG_SERVER_URI=http://config-server:8888
+    depends_on:
+      config-server:
+        condition: service_healthy
+      service-discovery:
+        condition: service_healthy
+      rabbitmq:
         condition: service_healthy
     networks:
       - helpdesk

@@ -34,8 +34,11 @@ dependencies {
     // Starter para configuração do Spring Cloud
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
 
-//    Starter para cliente Eureka do Spring Cloud Netflix
-//    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    // Starter para cliente Eureka do Spring Cloud Netflix
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
+    // Actuator - Monitoramento e gerenciamento de aplicações Spring Boot
+    implementation 'org.springframework.boot:spring-boot-actuator'
 
     // Starter para testes do Spring Boot
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
