@@ -118,6 +118,23 @@ services:
     networks:
       - helpdesk
 
+  user-service-api:
+    container_name: 'user-service-api'
+    build:
+      context: ./user-service-api
+      dockerfile: Dockerfile
+    environment:
+      - PROFILE_ACTIVE=dev
+      - EUREKA_URI=http://service-discovery:8761/eureka
+      - CONFIG_SERVER_URI=http://config-server:8888
+    depends_on:
+      config-server:
+        condition: service_healthy
+      service-discovery:
+        condition: service_healthy
+    networks:
+      - helpdesk
+
 networks:
   helpdesk:
     driver: bridge

@@ -5,6 +5,9 @@ repositories {
 }
 
 dependencies {
+    // Actuator - Monitoramento e gerenciamento de aplicações Spring Boot
+    implementation 'org.springframework.boot:spring-boot-actuator'
+
     // Biblioteca de código comum
     implementation 'br.com.valdircezar:hd-commons-lib:1.0.0'
 
