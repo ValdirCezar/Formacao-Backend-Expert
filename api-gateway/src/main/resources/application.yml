@@ -1,17 +1,5 @@
 spring:
   application:
-    name: "api-gateway"
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-eureka:
-  client:
-    service-url:
-      fetch-registry: true
-      register-with-eureka: true
-      defaultZone: ${EUREKA_URI}
-server:
-  port: ${SERVER_PORT:8765}
+    name: 'api-gateway'
+  profiles:
+    active: ${PROFILE_ACTIVE}
