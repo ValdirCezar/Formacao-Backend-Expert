@@ -18,8 +18,11 @@ import static org.apache.http.HttpHeaders.AUTHORIZATION;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
-    public JWTAuthorizationFilter(AuthenticationManager authenticationManager) {
+    private final JWTUtil jwtUtil;
+
+    public JWTAuthorizationFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil) {
         super(authenticationManager);
+        this.jwtUtil = jwtUtil;
     }
 
     @Override
@@ -41,8 +44,6 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
         final String token = request.getHeader(AUTHORIZATION).substring(7);
-
-        jwtUtil.validateToken(token);
 
         String username = jwtUtil.getUsername(token);
         Claims claims = jwtUtil.getClaims(token);
