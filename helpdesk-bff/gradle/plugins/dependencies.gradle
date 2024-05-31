@@ -53,21 +53,21 @@ dependencies {
         because('Starter para integração com o Spring Data JPA')
     }
 
-//    implementation ('org.springframework.boot:spring-boot-starter-security') {
-//        because('Starter para segurança de aplicações com Spring Security')
-//    }
-//
-//    implementation ('io.jsonwebtoken:jjwt-api:0.11.2') {
-//        because('Biblioteca para manipulação de tokens JWT')
-//    }
-//
-//    runtimeOnly ('io.jsonwebtoken:jjwt-impl:0.11.2') {
-//        because('Biblioteca para manipulação de tokens JWT')
-//    }
-//
-//    runtimeOnly ('io.jsonwebtoken:jjwt-jackson:0.11.2') {
-//        because('Biblioteca para manipulação de tokens JWT')
-//    }
+    implementation ('org.springframework.boot:spring-boot-starter-security') {
+        because('Starter para segurança de aplicações com Spring Security')
+    }
+
+    implementation ('io.jsonwebtoken:jjwt-api:0.11.2') {
+        because('Biblioteca para manipulação de tokens JWT')
+    }
+
+    runtimeOnly ('io.jsonwebtoken:jjwt-impl:0.11.2') {
+        because('Biblioteca para manipulação de tokens JWT')
+    }
+
+    runtimeOnly ('io.jsonwebtoken:jjwt-jackson:0.11.2') {
+        because('Biblioteca para manipulação de tokens JWT')
+    }
 
     // Lombok
     compileOnly 'org.projectlombok:lombok'
