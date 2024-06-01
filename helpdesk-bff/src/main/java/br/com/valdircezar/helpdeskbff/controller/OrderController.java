@@ -15,6 +15,7 @@ import models.requests.UpdateOrderRequest;
 import models.responses.OrderResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,6 +42,7 @@ public interface OrderController {
                     content = @Content(mediaType = APPLICATION_JSON_VALUE, schema = @Schema(implementation = StandardError.class))
             )
     })
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TECHNICIAN')")
     @GetMapping("/{id}")
     ResponseEntity<OrderResponse> findById(
             @NotNull(message = "The order id must be informed")
@@ -56,6 +58,7 @@ public interface OrderController {
                     content = @Content(mediaType = APPLICATION_JSON_VALUE, schema = @Schema(implementation = StandardError.class))
             )
     })
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TECHNICIAN')")
     @GetMapping
     ResponseEntity<List<OrderResponse>> findAll();
 
@@ -75,6 +78,7 @@ public interface OrderController {
                     content = @Content(mediaType = APPLICATION_JSON_VALUE, schema = @Schema(implementation = StandardError.class))
             )
     })
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TECHNICIAN')")
     @PostMapping
     ResponseEntity<Void> save(
             @Valid @RequestBody final CreateOrderRequest request
@@ -96,6 +100,7 @@ public interface OrderController {
                     content = @Content(mediaType = APPLICATION_JSON_VALUE, schema = @Schema(implementation = StandardError.class))
             )
     })
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TECHNICIAN')")
     @PutMapping("/{id}")
     ResponseEntity<OrderResponse> update(
             @Parameter(description = "Order id", required = true, example = "10")
@@ -120,6 +125,7 @@ public interface OrderController {
                     content = @Content(mediaType = APPLICATION_JSON_VALUE, schema = @Schema(implementation = StandardError.class))
             )
     })
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TECHNICIAN')")
     @DeleteMapping("/{id}")
     ResponseEntity<Void> deleteById(
             @NotNull(message = "The order id must be informed")
@@ -135,6 +141,7 @@ public interface OrderController {
                     content = @Content(mediaType = APPLICATION_JSON_VALUE, schema = @Schema(implementation = StandardError.class))
             )
     })
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TECHNICIAN')")
     @GetMapping("/page")
     ResponseEntity<Page<OrderResponse>> findAllPaginated(
             @Parameter(description = "Page number", example = "0", required = true)
