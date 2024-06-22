@@ -1,5 +1,6 @@
 package br.com.valdircezar.helpdeskbff.client;
 
+import br.com.valdircezar.helpdeskbff.config.FeignConfig;
 import jakarta.validation.Valid;
 import models.requests.CreateUserRequest;
 import models.requests.UpdateUserRequest;
@@ -12,7 +13,8 @@ import java.util.List;
 
 @FeignClient(
         name = "localhost:8765/user-service-api", // TODO: Change this to the correct URL
-        path = "/api/users"
+        path = "/api/users",
+        configuration = FeignConfig.class
 )
 public interface UserFeignClient {
 
