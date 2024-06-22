@@ -9,6 +9,7 @@
 /Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/requests/UpdateOrderRequest.java
 /Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/responses/UserResponse.java
 /Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/exceptions/RefreshTokenExpired.java
+/Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/exceptions/InternalServerErrorException.java
 /Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/exceptions/GenericFeignException.java
 /Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/requests/CreateUserRequest.java
 /Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/dtos/OrderCreatedMessage.java

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Response;
 import feign.codec.ErrorDecoder;
 import models.exceptions.GenericFeignException;
+import models.exceptions.InternalServerErrorException;
 
 import java.io.InputStream;
 import java.util.Map;
@@ -21,7 +22,7 @@ public class RetrieveMessageErrorDecoder implements ErrorDecoder {
 
             return new GenericFeignException(status, error);
         } catch (Exception e) {
-            throw new RuntimeException("Error reading body", e); // TODO: Change to a custom exception
+            throw new InternalServerErrorException("Internal server error. Try again later.");
         }
     }
 }
