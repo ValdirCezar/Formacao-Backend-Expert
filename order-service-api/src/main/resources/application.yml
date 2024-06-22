@@ -3,6 +3,11 @@ spring:
     name: 'order-service-api'
   profiles:
     active: ${PROFILE_ACTIVE}
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      connect-timeout: 10000
   rabbitmq:
     host: ${RABBITMQ_HOST}
     port: ${RABBITMQ_PORT}

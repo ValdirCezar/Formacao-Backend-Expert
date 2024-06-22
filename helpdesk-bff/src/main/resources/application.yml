@@ -4,6 +4,11 @@ spring:
   cloud:
     config:
       uri: 'config-server'
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      connect-timeout: 10000
 eureka:
   client:
     service-url:

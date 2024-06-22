@@ -14,6 +14,8 @@ import models.requests.UpdateOrderRequest;
 import models.responses.OrderResponse;
 import models.responses.UserResponse;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -34,6 +36,7 @@ public class OrderServiceImpl implements OrderService {
     private final RabbitTemplate rabbitTemplate;
 
     @Override
+    @Cacheable(value = "orders", key = "#id")
     public Order findById(final Long id) {
         return repository
                 .findById(id)
@@ -42,6 +45,7 @@ public class OrderServiceImpl implements OrderService {
                 ));
     }
 
+    @CacheEvict(value = "orders", allEntries = true)
     @Override
     public void save(CreateOrderRequest request) {
         final var requester = validateUserId(request.requesterId());
@@ -58,6 +62,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @CacheEvict(value = "orders", allEntries = true)
     public OrderResponse update(final Long id, UpdateOrderRequest request) {
         validateUsers(request);
 
@@ -77,16 +82,19 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @CacheEvict(value = "orders", allEntries = true)
     public void deleteById(final Long id) {
         repository.delete(findById(id));
     }
 
     @Override
+    @Cacheable(value = "orders")
     public List<Order> findAll() {
         return repository.findAll();
     }
 
     @Override
+    @Cacheable(value = "orders", key = "#page + '-' + #linesPerPage + '-' + #direction + '-' + #orderBy")
     public Page<Order> findAllPaginated(Integer page, Integer linesPerPage, String direction, String orderBy) {
         PageRequest pageRequest = PageRequest.of(
                 page,
@@ -98,7 +106,7 @@ public class OrderServiceImpl implements OrderService {
         return repository.findAll(pageRequest);
     }
 
-    UserResponse validateUserId(final String userId) {
-        return userServiceFeignClient.findById(userId).getBody();
+    public UserResponse validateUserId(final String id) {
+        return userServiceFeignClient.findById(id).getBody();
     }
 }

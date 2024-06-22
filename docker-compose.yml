@@ -155,6 +155,22 @@ services:
     networks:
       - helpdesk
 
+  redis:
+    container_name: 'redis'
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    expose:
+      - 6379
+    volumes:
+      - redis_data:/data
+    networks:
+      - helpdesk
+
 networks:
   helpdesk:
     driver: bridge
+
+volumes:
+  redis_data:
+    driver: local

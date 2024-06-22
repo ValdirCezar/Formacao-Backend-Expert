@@ -37,6 +37,10 @@ dependencies {
         because('Starter para integração com o Spring Data JPA')
     }
 
+    implementation('org.springframework.boot:spring-boot-starter-data-redis') {
+        because('Starter para integração com o Redis')
+    }
+
     implementation('org.springframework.boot:spring-boot-starter-validation') {
         because('Starter para validação de dados com o Spring Validation')
     }
