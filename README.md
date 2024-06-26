@@ -1,6 +1,11 @@
-# Formação Backend Expert
+<div>
+<h1 align="center"> Formação Backend Expert <img src="https://github.com/ABSphreak/ABSphreak/blob/master/gifs/Hi.gif?raw=true" width="30px"></h2>
+	
+</div>
 
-<img width="908" alt="image" src="https://github.com/ValdirCezar/Formacao-Backend-Expert/assets/58149445/47fbd128-e28a-4dc0-8cd6-3d34dac2189b">
+<p align="center">
+  <img width="908" alt="image" src="https://github.com/ValdirCezar/Formacao-Backend-Expert/assets/58149445/47fbd128-e28a-4dc0-8cd6-3d34dac2189b">
+
 
 ## Visão Geral
 
@@ -48,7 +53,20 @@ O projeto "Formação Backend Expert" tem como objetivo fornecer uma formação 
 - [Maven](https://maven.apache.org/install.html)
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
+### Iniciando o Projeto com Gradle
 
+1. Clone este repositório.
+2. Navegue até o diretório do projeto.
+3. Execute `./gradlew build` para compilar o projeto.
+4. Execute `./gradlew run` para iniciar o servidor.
+
+### Importando a Coleção do Postman
+
+1. Baixe a coleção do Postman.
+2. Abra o aplicativo Postman.
+3. Clique em "Importar".
+4. Selecione o arquivo da coleção baixado.
+5. Siga as instruções para importar a coleção.
 
 ## Contribuição
 
@@ -64,8 +82,4 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ## Contato
 
-Valdir Cezar - [valdircezar312@gmail.com](mailto:valdircezar312@gmail.com)
-
-
-
-
+Valdir Cezar - [LinkedIn](https://www.linkedin.com/in/valdircezar/)
