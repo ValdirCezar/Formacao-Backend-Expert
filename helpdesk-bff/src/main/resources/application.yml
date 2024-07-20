@@ -4,9 +4,6 @@ spring:
   cloud:
     config:
       uri: 'config-server'
-    openfeign:
-      okhttp:
-        enabled: true
   data:
     redis:
       host: ${REDIS_HOST:localhost}
