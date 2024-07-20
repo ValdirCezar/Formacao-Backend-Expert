@@ -1,5 +1,6 @@
 package br.com.valdircezar.helpdeskbff.client;
 
+import br.com.valdircezar.helpdeskbff.config.FeignConfig;
 import jakarta.validation.Valid;
 import models.requests.AuthenticateRequest;
 import models.requests.RefreshTokenRequest;
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(
         name = "localhost:8765/auth-service-api",
-        path = "/api/auth"
+        path = "/api/auth",
+        configuration = FeignConfig.class
 )
 public interface AuthFeignClient {
 
