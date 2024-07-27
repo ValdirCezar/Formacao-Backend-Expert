@@ -15,5 +15,6 @@
 /Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/dtos/OrderCreatedMessage.java
 /Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/requests/CreateOrderRequest.java
 /Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/requests/AuthenticateRequest.java
+/Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/exceptions/JWTCustomException.java
 /Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/requests/RefreshTokenRequest.java
 /Users/valdircezar/Desktop/Help Desk 2.0/hd-commons-lib/src/main/java/models/responses/AuthenticationResponse.java

@@ -20,6 +20,7 @@ models/exceptions/ValidationException.class
 models/requests/UpdateOrderRequest.class
 models/requests/UpdateUserRequest.class
 models/requests/CreateOrderRequest.class
+models/exceptions/JWTCustomException.class
 models/requests/AuthenticateRequest.class
 models/responses/AuthenticationResponse$AuthenticationResponseBuilder.class
 models/responses/OrderResponse.class
