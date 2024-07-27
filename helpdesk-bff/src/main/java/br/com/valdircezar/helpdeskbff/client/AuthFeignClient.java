@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(
-        name = "localhost:8765/auth-service-api",
+        name = "auth-service-api",
         path = "/api/auth",
         configuration = FeignConfig.class
 )

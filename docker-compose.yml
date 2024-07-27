@@ -40,7 +40,7 @@ services:
     environment:
       - CONFIG_SERVER_URI=https://github.com/ValdirCezar/formacao-backend-expert-configs
       - CONFIG_SERVER_USERNAME=valdir_cezar
-      - CONFIG_SERVER_PASSWORD=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
+      - CONFIG_SERVER_PASSWORD=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
       - EUREKA_URI=http://service-discovery:8761/eureka
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://config-server:8888/actuator/health" ]
@@ -158,12 +158,39 @@ services:
   redis:
     container_name: 'redis'
     image: redis:latest
+    healthcheck:
+      test: redis-cli ping
     ports:
       - "6379:6379"
     expose:
       - 6379
     volumes:
       - redis_data:/data
+    networks:
+      - helpdesk
+
+  helpdesk-bff:
+    container_name: 'helpdesk-bff'
+    build:
+      context: ./helpdesk-bff
+      dockerfile: Dockerfile
+    environment:
+      - PROFILE_ACTIVE=dev
+      - EUREKA_URI=http://service-discovery:8761/eureka
+      - CONFIG_SERVER_URI=http://config-server:8888
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      config-server:
+        condition: service_healthy
+      service-discovery:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    expose:
+      - 8080
     networks:
       - helpdesk
 

@@ -1,27 +1,5 @@
 spring:
   application:
     name: 'helpdesk-bff'
-  cloud:
-    config:
-      uri: 'config-server'
-    openfeign:
-      okhttp:
-        enabled: true
-  data:
-    redis:
-      host: ${REDIS_HOST:localhost}
-      port: ${REDIS_PORT:6379}
-      connect-timeout: 10000
-eureka:
-  client:
-    service-url:
-      fetch-registry: true
-      register-with-eureka: true
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
-springdoc:
-  openapi:
-    title: 'BFF Helpdesk API'
-    description: 'Component responsible for aggregating the microservices of the Helpdesk system'
-    version: '1.0.0'
-
-jwt.secret: 'g1tjxjNseZssBjOTwMvigeZtbuqR8NW7S3SF7HwlWPZ8AwVoHmZJPiocnY9I4Zsp3X0qp8Pz/kK/g9VRD6D4xkl9To9tgMXyizPBzDpmw6g='
+  profiles:
+    active: ${PROFILE_ACTIVE}
